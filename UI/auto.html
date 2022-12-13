@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang = "en">
+   <head>
+      <meta charset = "utf-8">
+      <title>Personality Prediction</title>
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+      <style type="text/css">
+        .ui-widget{
+          height: 200px; 
+          overflow-y: scroll; 
+          overflow-x: hidden;
+        }
+      </style>
+      <!-- Javascript -->
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <script src="js/suggestions.js"></script>
+      <script>
+         $(function() {
+            $("#enter_movie").autocomplete({
+               minLength:3,   
+               delay:50, 
+               source: suggestions
+            });
+            document.getElementById("submit").addEventListener("click", function() {
+            var movie = document.getElementById("enter_movie").value;
+            var one = document.getElementById("1").value;
+            var two = document.getElementById("2").value;
+            var three = document.getElementById("3").value;
+            var four = document.getElementById("4").value;
+            var five = document.getElementById("5").value;
+            if(one == "" ){
+              document.getElementById("1").value = movie;
+            }
+            else if(two == ""){
+              document.getElementById("2").value = movie; 
+            }
+            else if(three == ""){
+              document.getElementById("3").value = movie; 
+            }
+            else if(four == ""){
+              document.getElementById("4").value = movie; 
+            }
+            else if(five == ""){
+              document.getElementById("5").value = movie; 
+            }
+            else{
+              document.getElementById("error").innerText = "ONLY 5 MOVIES ARE REQIRED"; 
+            }
+            document.getElementById("enter_movie").value = '';
+            // var prev = document.getElementById("my_movies").innerText;
+            // console.log(movie);
+            // console.log(prev);
+            // listdata = movie + '<br>' + prev;
+            // document.getElementById("my_movies").innerHTML = listdata;
+           });
+         });
+         
+      </script>
+   </head>
+   <body>
+        <h1>PERSONALITY PREDICTION</h1>
+        <div class = "ui-widget">
+         <label for = "enter_movie"></label>
+         <input id = "enter_movie"><button id = "submit">ADD</button>
+      </div>
+      <h2> Your Selected Movies</h2>
+      <div id="error"></div>
+      <form action="/" method="POST" id="myform">
+        <label>1</label><input type="text" id="1" name="1"></input><br>
+        <label>2</label><input type="text" id="2" name="2"></input><br>
+        <label>3</label><input type="text" id="3" name="3"></input><br>
+        <label>4</label><input type="text" id="4" name="4"></input><br>
+        <label>5</label><input type="text" id="5" name="5"></input><br>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="my_movies">
+      </div>
+   </body>
+</html>

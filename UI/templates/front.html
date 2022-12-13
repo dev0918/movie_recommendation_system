@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Recommender</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflar/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,500&amp;display=swap'>
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+<style>
+html {
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-image: url("https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-position: 100% ;
+
+  font-family: "Poppins", Times New Roman;
+  background-size: cover;
+  font-weight: 300;
+  font-size: 100%;
+  background-color: #F1FDFF;
+  line-height: 1.5;
+  color: #000;
+
+}
+
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+figure {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+
+}
+
+
+.menu__info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+}
+
+.js-overflow {
+  overflow: hidden;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.absolute-bg {
+  position: absolute;
+ 
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+    .movie1{
+        height: 70vh;
+        margin-top: 3vh;
+        margin-bottom: 15vh;
+        margin-right: 5vh;
+        margin-left: 5vh;
+        border-radius: 20px;
+        padding: 1em;
+        width: auto;
+        text-align: center;
+    }
+    
+    .movie{
+        margin-top: 2vh;
+        margin-bottom: 5vh;
+        margin-right: 0vh;
+        margin-left: 0vh;
+        text-align: center;
+    }
+    #enter_movie{
+        width: 45%;
+        padding: 0.8em;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px red;
+    }
+    #use_id{
+        width: 35%;
+        padding: 0.8em;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px red;
+    }
+    #submissionn_button{
+        margin-top: 2vh;
+        margin-bottom: 5vh;
+        width: 10%;
+        padding: 0.8em;
+        margin: 0.5em;
+        border-radius: 15px;
+        color: white;
+        background-color: darkred;
+        border-style: none;
+    }
+    #submission_button{
+        width: 10%;
+        padding: 0.8em;
+        margin: 0.5em;
+        border-radius: 15px;
+        color: white;
+        background-color: darkred;
+        border-style: none;
+    }
+    @media screen and (max-width:600px) {
+        .movie{
+            margin-top: 8vh;
+            margin-bottom: 1vh;
+        }
+}
+
+
+}
+</style>
+</head>
+<body>
+<style>
+
+body {
+  background-color: lightgrey; 
+  color: red;
+}
+
+h1 {
+  color: White;
+  hight: 0vh;
+  width: 50%;
+  padding:2em;
+  margin: 0.5em;
+  border-radius: 20px;
+  border-style: none;
+}
+.ui-widget{
+          height: 250px; 
+          overflow-y: scroll; 
+          overflow-x: hidden;
+          color: White;
+        }
+</style>
+
+<!-- Demo -->
+<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <script src="static/suggestions.js"></script>
+      <script>
+         $(function() {
+            $("#enter_movie").autocomplete({
+               minLength:3,   
+               delay:100, 
+               source: suggestions
+            });
+          });
+  </script>
+
+<strong><center><h1> MOVIES RECOMMENDATION SYSTEM</h1></center></strong>
+
+    <div class="movie">
+      
+        <h2>CONTENT BASED</h2>
+        <form action="/predict/" method="POST">
+            <input type="text" id="enter_movie" name="movie_name" placeholder="Enter a movie name" required />
+            <div class = "ui-widget"></div>
+            <input type="submit" id="submissionn_button" value="Click Here"/>
+        </form>
+        
+     <br>
+     <div class="movie1">
+        <h2>USER BASED</h2>
+     <form action="/user/" method="POST">
+            <input type="text" id="use_id" name="user_id" placeholder="Enter User id" required />
+            <input type="submit" id="submission_button" value="Click Here"/>
+        </form>
+      <br>
+  
+</body>
+</html>
